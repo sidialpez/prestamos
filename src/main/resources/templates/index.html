@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Clientes</title>
+</head>
+<body>
+<h2>Datos del Cliente</h2>
+<br/>
+Nombre: <span th:text="${cliente.nombre}"></span>
+<br/>
+Apellido: <span th:text="${cliente.apellido}"></span>
+<br/>
+Teléfono: <span th:text="${cliente.telefono}"></span>
+<br/>
+Correo: <span th:text="${cliente.correo}"></span>
+<br/>
+Dirección: <span th:text="${cliente.direccion}"></span>
+<br/>
+Fecha de Nacimiento: <span th:text="${#dates.format(cliente.fechaNacimiento, 'dd/MM/yyyy')}"></span>
+</body>
+</html>
