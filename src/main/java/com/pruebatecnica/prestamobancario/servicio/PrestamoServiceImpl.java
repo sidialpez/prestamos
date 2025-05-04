@@ -20,6 +20,7 @@ public class PrestamoServiceImpl implements PrestamoService {
     @Autowired
     PagoPrestamoDao pagoPrestamoDao;
 
+    @Autowired
     EstadoPrestamoDao estadoPrestamoDao;
 
     @Override
