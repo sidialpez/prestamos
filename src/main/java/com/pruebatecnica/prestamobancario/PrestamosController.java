@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Controller
@@ -27,6 +29,18 @@ public class PrestamosController {
             model.addAttribute("cui", cui);
         }
         return "listadoPrestamos";
+    }
+
+
+    @GetMapping("/prestamos/saldo/{id}")
+    public String verSaldo(@PathVariable("id") Integer idPrestamo, Model model) {
+        Prestamo prestamo = prestamoService.buscarPorId(idPrestamo);
+        BigDecimal saldo = prestamoService.calcularSaldoPendiente(idPrestamo);
+
+        model.addAttribute("prestamo", prestamo);
+        model.addAttribute("saldoPendiente", saldo);
+
+        return "saldoPrestamo";
     }
 
 

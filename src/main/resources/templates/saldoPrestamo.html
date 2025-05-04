@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Saldo del Préstamo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Detalle del Saldo del Préstamo</h2>
+
+    <table class="table table-bordered mt-4">
+        <tr>
+            <th>Cliente</th>
+            <td th:text="${prestamo.solicitudPrestamo.cliente.nombre + ' ' + prestamo.solicitudPrestamo.cliente.apellido}"></td>
+        </tr>
+        <tr>
+            <th>Monto Aprobado</th>
+            <td th:text="${prestamo.solicitudPrestamo.montosolicitado}"></td>
+        </tr>
+        <tr>
+            <th>Fecha Aprobación</th>
+            <td th:text="${#dates.format(prestamo.fechaaprobacion, 'dd/MM/yyyy')}"></td>
+        </tr>
+        <tr>
+            <th>Estado del Préstamo</th>
+            <td th:text="${prestamo.estadoPrestamo.nombreestadoPrestamo}"></td>
+        </tr>
+        <tr>
+            <th>Saldo Pendiente</th>
+            <td th:text="${saldoPendiente}"></td>
+        </tr>
+    </table>
+
+    <a th:href="@{/prestamos/aprobados(cui=${prestamo.solicitudPrestamo.cliente.cui})}" class="btn btn-secondary">
+        ← Volver a préstamos del cliente
+    </a>
+</div>
+</body>
+</html>
