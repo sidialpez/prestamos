@@ -1,7 +1,9 @@
 package com.pruebatecnica.prestamobancario.servicio;
 
+import com.pruebatecnica.prestamobancario.dao.EstadoPrestamoDao;
 import com.pruebatecnica.prestamobancario.dao.PagoPrestamoDao;
 import com.pruebatecnica.prestamobancario.dao.PrestamoDao;
+import com.pruebatecnica.prestamobancario.dominio.EstadoPrestamo;
 import com.pruebatecnica.prestamobancario.dominio.Prestamo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,8 @@ public class PrestamoServiceImpl implements PrestamoService {
 
     @Autowired
     PagoPrestamoDao pagoPrestamoDao;
+
+    EstadoPrestamoDao estadoPrestamoDao;
 
     @Override
     public List<Prestamo> obtenerPrestamosAprobadosPorCui(String cui) {
@@ -38,6 +42,17 @@ public class PrestamoServiceImpl implements PrestamoService {
         }
 
         return prestamo.getSolicitudPrestamo().getMontosolicitado().subtract(montoPagado);
+    }
+
+    @Override
+    public void verificarYActualizarEstadoSiCancelado(Integer idPrestamo) {
+        BigDecimal saldo = calcularSaldoPendiente(idPrestamo);
+        if (saldo.compareTo(BigDecimal.ZERO) <= 0) {
+            Prestamo prestamo = prestamoDao.findById(idPrestamo).orElseThrow();
+            EstadoPrestamo cancelado = estadoPrestamoDao.findByNombreestadoPrestamo("Cancelado");
+            prestamo.setEstadoPrestamo(cancelado);
+            prestamoDao.save(prestamo);
+        }
     }
 
 

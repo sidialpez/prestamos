@@ -9,5 +9,6 @@ public interface PrestamoService {
     List<Prestamo> obtenerPrestamosAprobadosPorCui(String cui);
     Prestamo buscarPorId(Integer idPrestamo);
     BigDecimal calcularSaldoPendiente(Integer idPrestamo);
+    void verificarYActualizarEstadoSiCancelado(Integer idPrestamo);
 
 }
