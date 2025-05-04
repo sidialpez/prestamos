@@ -15,13 +15,24 @@ public class SolicitudPrestamo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idsolicitudprestamo;
+    private Long idsolicitudprestamo;
 
     private BigDecimal montosolicitado;
     private Integer plazo;
+
+    @Temporal(TemporalType.DATE)
     private Date fechasolicitud;
-    private Integer estadosolicitud;
-    private Integer idcliente;
-    private Integer idusuario;
+
+    @ManyToOne
+    @JoinColumn(name="estadosolicitud_idestadosolicitud")
+    private EstadoSolicitud estadoSolicitud;
+
+    @ManyToOne
+    @JoinColumn(name="cliente_idcliente")
+    private Cliente cliente;
+
+    @ManyToOne
+    @JoinColumn(name="usuario_idusuario")
+    private Usuario idusuario;
 
 }

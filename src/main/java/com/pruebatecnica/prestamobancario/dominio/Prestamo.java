@@ -15,9 +15,21 @@ public class Prestamo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idprestamo;
-    private Integer idsolicitudprestamo;
+    private Long idprestamo;
+
     private BigDecimal montoaprobado;
+
+    @Temporal(TemporalType.DATE)
     private Date fechaaprobacion;
-    private Integer idestadoprestamo;
+
+    private BigDecimal tasainteres;
+    private BigDecimal saldopendiente;
+
+    @ManyToOne
+    @JoinColumn(name = "idsolicitudprestamo")
+    private SolicitudPrestamo solicitudPrestamo;
+
+    @ManyToOne
+    @JoinColumn(name = "idestadoprestamo")
+    private EstadoPrestamo estadoPrestamo;
 }

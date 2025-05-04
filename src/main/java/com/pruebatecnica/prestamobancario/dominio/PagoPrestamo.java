@@ -15,9 +15,18 @@ public class PagoPrestamo implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idpagoprestamo;
+    private Long idpagoprestamo;
+
+    @Temporal(TemporalType.DATE)
     private Date fechapagoprestamo;
+
     private BigDecimal montopagado;
-    private Integer idprestamo;
-    private Integer idusuario;
+
+    @ManyToOne
+    @JoinColumn(name = "idprestamo")
+    private Prestamo prestamo;
+
+    @ManyToOne
+    @JoinColumn(name = "idusuario")
+    private Usuario usuario;
 }

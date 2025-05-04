@@ -1,6 +1,6 @@
 package com.pruebatecnica.prestamobancario.servicio;
 
-import com.pruebatecnica.prestamobancario.dao.IClienteDao;
+import com.pruebatecnica.prestamobancario.dao.ClienteDao;
 import com.pruebatecnica.prestamobancario.dominio.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,15 +12,13 @@ import java.util.List;
 public class ClienteServiceImpl implements ClienteService{
 
     @Autowired
-    private IClienteDao iClienteDao;
+    private ClienteDao iClienteDao;
 
-    /*
     @Override
     @Transactional(readOnly = true)
-    public List<Cliente> listarClientes() {
-        return (List<Cliente>) iClienteDao.findAll();
+    public Cliente buscarClienteCui(String cui) {
+        return iClienteDao.findByCui(cui);
     }
-    */
 
     @Override
     @Transactional(readOnly = true)
@@ -45,4 +43,6 @@ public class ClienteServiceImpl implements ClienteService{
     public Cliente buscar(Cliente cliente) {
         return iClienteDao.findById(cliente.getIdcliente()).orElse(null);
     }
+
+
 }

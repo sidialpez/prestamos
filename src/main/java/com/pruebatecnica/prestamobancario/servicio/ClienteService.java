@@ -13,4 +13,6 @@ public interface ClienteService {
     public void eliminar(Cliente cliente);
 
     public Cliente buscar(Cliente cliente);
+
+    public Cliente buscarClienteCui(String cui);
 }
