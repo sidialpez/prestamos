@@ -10,26 +10,25 @@ import java.util.Date;
 @Data
 @Entity
 @Table (name="prestamo")
-public class Prestamo implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Prestamo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idprestamo;
-
-    private BigDecimal montoaprobado;
-
-    @Temporal(TemporalType.DATE)
-    private Date fechaaprobacion;
-
-    private BigDecimal tasainteres;
-    private BigDecimal saldopendiente;
+    private Integer idprestamo;
 
     @ManyToOne
-    @JoinColumn(name = "idsolicitudprestamo")
+    @JoinColumn(name = "idsolicitudprestamo", nullable = false)
     private SolicitudPrestamo solicitudPrestamo;
 
+    @Temporal(TemporalType.DATE)
+    @Column(name = "fechaaprobacion", nullable = false)
+    private Date fechaaprobacion;
+
     @ManyToOne
-    @JoinColumn(name = "idestadoprestamo")
+    @JoinColumn(name = "estadoprestamo_idestadoprestamo", nullable = false)
     private EstadoPrestamo estadoPrestamo;
+
+    @ManyToOne
+    @JoinColumn(name = "idusuario")
+    private Usuario usuario;
 }

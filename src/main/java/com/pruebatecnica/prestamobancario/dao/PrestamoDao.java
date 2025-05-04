@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PrestamoDao extends CrudRepository<Prestamo,Integer> {
+public interface PrestamoDao extends CrudRepository<Prestamo, Integer> {
 }

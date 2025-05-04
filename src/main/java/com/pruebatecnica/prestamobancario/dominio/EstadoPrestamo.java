@@ -8,13 +8,15 @@ import java.io.Serializable;
 @Data
 @Entity
 @Table(name = "estadoprestamo")
-public class EstadoPrestamo implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class EstadoPrestamo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idestadoprestamo;
+    private Integer idestadoprestamo;
 
-    private String nombreestado;
-    private String eliminado;
+    @Column(name = "nombreestadoprestamo")
+    private String nombreestadoPrestamo;
+
+
 }
+
