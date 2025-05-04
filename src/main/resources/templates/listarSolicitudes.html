@@ -7,6 +7,10 @@
 </head>
 <body class="bg-light">
 <div class="container mt-5">
+
+    <div th:if="${mensaje}" class="alert alert-success" th:text="${mensaje}"></div>
+
+
     <h2 class="mb-4">Buscar Solicitudes de Préstamo en Proceso</h2>
 
     <!-- Formulario de búsqueda por CUI -->
@@ -46,8 +50,9 @@
                 <td th:text="${s.plazo}">Plazo</td>
                 <td th:text="${s.estadoSolicitud.nombreestado}">Estado</td>
                 <td>
-                    <a th:href="@{/solicitudes/aprobar/{id}(id=${s.idsolicitudprestamo})}" class="btn btn-success btn-sm">Aprobar</a>
-                    <a th:href="@{/solicitudes/rechazar/{id}(id=${s.idsolicitudprestamo})}" class="btn btn-danger btn-sm">Rechazar</a>
+                    <a th:href="@{'/solicitudes/aprobar/' + ${s.idsolicitudprestamo} + '?cui=' + ${s.cliente.cui}}" class="btn btn-success btn-sm">Aprobar</a>
+                    <a th:href="@{'/solicitudes/rechazar/' + ${s.idsolicitudprestamo} + '?cui=' + ${s.cliente.cui}}" class="btn btn-danger btn-sm">Rechazar</a>
+
                 </td>
             </tr>
             </tbody>

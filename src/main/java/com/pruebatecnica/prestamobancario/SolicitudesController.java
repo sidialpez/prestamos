@@ -63,18 +63,23 @@ public class SolicitudesController {
     }
 
     @GetMapping("/solicitudes/aprobar/{id}")
-    public String aprobarSolicitud(@PathVariable Integer id) {
-        log.info("Solicitud aprobar con id {}", id);
+    public String aprobarSolicitud(@PathVariable Integer id,
+                                   @RequestParam("cui") String cui,
+                                   RedirectAttributes redirect) {
         solicitudService.actualizarEstadoSolicitud(id, "Aprobado");
-        log.info("actualizado ");
-        return "redirect:/solicitudes/pendientes";
+        redirect.addFlashAttribute("mensaje", "✅ La solicitud fue aprobada exitosamente.");
+        return "redirect:/solicitudes/pendientes?cui=" + cui;
     }
 
     @GetMapping("/solicitudes/rechazar/{id}")
-    public String rechazarSolicitud(@PathVariable Integer id) {
+    public String rechazarSolicitud(@PathVariable Integer id,
+                                    @RequestParam("cui") String cui,
+                                    RedirectAttributes redirect) {
         solicitudService.actualizarEstadoSolicitud(id, "Rechazado");
-        return "redirect:/solicitudes/pendientes";
+        redirect.addFlashAttribute("mensaje", "❌ La solicitud fue rechazada correctamente.");
+        return "redirect:/solicitudes/pendientes?cui=" + cui;
     }
+
 
 
 }
