@@ -19,6 +19,7 @@ public class SolicitudPrestamo implements Serializable {
 
     private BigDecimal montosolicitado;
     private Integer plazo;
+    private Integer tasainteres;
 
     @Temporal(TemporalType.DATE)
     private Date fechasolicitud;

@@ -76,24 +76,20 @@
             <input type="hidden" th:field="*{cliente.idcliente}" />
 
 
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <label class="form-label">Monto Solicitado</label>
                 <input type="number"  th:field="*{montosolicitado}" class="form-control" required/>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <label class="form-label">Plazo (meses)</label>
                 <input type="number" th:field="*{plazo}" class="form-control" required/>
             </div>
 
-            <!--
-            <div class="col-md-6">
-                <label class="form-label">Estado de la Solicitud</label>
-                <select th:field="*{estadoSolicitud.idestadosolicitud}" class="form-select" required>
-                    <option th:each="estado : ${estados}" th:value="${estado.idestadosolicitud}" th:text="${estado.nombreestado}">Estado</option>
-                </select>
+            <div class="col-md-4">
+                <label class="form-label">Tasa interes</label>
+                <input type="number" th:field="*{tasainteres}" class="form-control" required/>
             </div>
-            -->
 
             <div class="col-12">
                 <button type="submit" class="btn btn-success">Guardar Solicitud</button>

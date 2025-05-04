@@ -38,6 +38,7 @@
                 <th>CUI</th>
                 <th>Monto Solicitado</th>
                 <th>Plazo</th>
+                <th>Tasa Interes</th>
                 <th>Estado</th>
                 <th>Acciones</th>
             </tr>
@@ -48,6 +49,7 @@
                 <td th:text="${s.cliente.cui}">CUI</td>
                 <td th:text="${s.montosolicitado}">Monto</td>
                 <td th:text="${s.plazo}">Plazo</td>
+                <td th:text="${s.tasainteres}">Plazo</td>
                 <td th:text="${s.estadoSolicitud.nombreestado}">Estado</td>
                 <td>
                     <a th:href="@{'/solicitudes/aprobar/' + ${s.idsolicitudprestamo} + '?cui=' + ${s.cliente.cui}}" class="btn btn-success btn-sm">Aprobar</a>
