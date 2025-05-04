@@ -10,4 +10,7 @@ public interface EstadoSolicitudDao extends CrudRepository<EstadoSolicitud, Long
 
     List<EstadoSolicitud> findByEliminado(String eliminado);
 
+    EstadoSolicitud findByNombreestado(String nombreestado);
+
+
 }

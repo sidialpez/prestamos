@@ -33,6 +33,6 @@ public class SolicitudPrestamo implements Serializable {
 
     @ManyToOne
     @JoinColumn(name="usuario_idusuario")
-    private Usuario idusuario;
+    private Usuario usuario;
 
 }
