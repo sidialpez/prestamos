@@ -9,24 +9,25 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name="pagosolicitud")
+@Table(name = "pagoprestamo")
 public class PagoPrestamo implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idpagoprestamo;
+    private Integer idpagoprestamo;
 
     @Temporal(TemporalType.DATE)
+    @Column(name = "fechapagoprestamo", nullable = false)
     private Date fechapagoprestamo;
 
+    @Column(name = "montopagado", nullable = false)
     private BigDecimal montopagado;
 
     @ManyToOne
-    @JoinColumn(name = "idprestamo")
-    private Prestamo prestamo;
+    @JoinColumn(name = "idusuario", nullable = false)
+    private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "idusuario")
-    private Usuario usuario;
+    @JoinColumn(name = "prestamo_idprestamo", nullable = false)
+    private Prestamo prestamo;
 }
