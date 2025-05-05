@@ -30,8 +30,10 @@ Este es un sistema web desarrollado con Java y Spring Boot para la gestión de p
 
 ### Prerrequisitos
 - Tener instalado [Docker](https://www.docker.com/) y [Docker Compose](https://docs.docker.com/compose/install/).
-
-### Pasos
+- Tener instalado Maven https://maven.apache.org/download.cgi y debe estar añadido al path de Windows
+- Se debe clonar el repositorio https://github.com/sidialpez/prestamos.git
+- Abrir la terminal de Windows
+- Ubicarse en el repositorio clonado y seguir los siguientes pasos:
 
 ### 1. Construcción del proyecto (generar JAR)
 ```bash
@@ -42,7 +44,6 @@ mvn clean package
 ```bash
 docker-compose up --build
 ```
-
 Esto hará lo siguiente:
 - Crear un contenedor MySQL en el puerto `3307`.
 - Ejecutar el script `init.sql` que crea las tablas necesarias y agrega datos iniciales.
