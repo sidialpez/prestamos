@@ -2,13 +2,10 @@ package com.pruebatecnica.prestamobancario;
 
 import com.pruebatecnica.prestamobancario.dao.EstadoSolicitudDao;
 import com.pruebatecnica.prestamobancario.dao.UsuarioDao;
-import com.pruebatecnica.prestamobancario.dominio.Cliente;
 import com.pruebatecnica.prestamobancario.dominio.EstadoSolicitud;
 import com.pruebatecnica.prestamobancario.dominio.SolicitudPrestamo;
 import com.pruebatecnica.prestamobancario.dominio.Usuario;
 import com.pruebatecnica.prestamobancario.servicio.SolicitudService;
-import com.pruebatecnica.prestamobancario.servicio.SolicitudServiceImpl;
-import com.pruebatecnica.prestamobancario.servicio.UsuarioService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +52,6 @@ public class SolicitudesController {
         solicitud.setUsuario(usuario);
 
         EstadoSolicitud estadoSolicitud = new EstadoSolicitud();
-        //estadoSolicitud.setIdestadosolicitud(3L);
         estadoSolicitud = estadoDao.findByNombreestado("En Proceso");
         solicitud.setUsuario(usuario);
         solicitud.setEstadoSolicitud(estadoSolicitud);

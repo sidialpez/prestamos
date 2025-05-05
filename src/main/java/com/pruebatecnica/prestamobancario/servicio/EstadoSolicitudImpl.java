@@ -1,7 +1,6 @@
 package com.pruebatecnica.prestamobancario.servicio;
 
 import com.pruebatecnica.prestamobancario.dao.EstadoSolicitudDao;
-import com.pruebatecnica.prestamobancario.dominio.Cliente;
 import com.pruebatecnica.prestamobancario.dominio.EstadoSolicitud;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

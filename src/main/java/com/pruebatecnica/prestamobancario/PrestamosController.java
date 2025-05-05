@@ -1,6 +1,5 @@
 package com.pruebatecnica.prestamobancario;
 
-import com.pruebatecnica.prestamobancario.dao.PrestamoDao;
 import com.pruebatecnica.prestamobancario.dominio.Prestamo;
 import com.pruebatecnica.prestamobancario.servicio.PrestamoService;
 import lombok.extern.slf4j.Slf4j;

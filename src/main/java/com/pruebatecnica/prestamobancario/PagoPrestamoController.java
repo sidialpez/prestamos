@@ -2,7 +2,6 @@ package com.pruebatecnica.prestamobancario;
 
 import com.pruebatecnica.prestamobancario.dominio.PagoPrestamo;
 import com.pruebatecnica.prestamobancario.dominio.Prestamo;
-import com.pruebatecnica.prestamobancario.dominio.SolicitudPrestamo;
 import com.pruebatecnica.prestamobancario.dominio.Usuario;
 import com.pruebatecnica.prestamobancario.servicio.PagoPrestamoService;
 import com.pruebatecnica.prestamobancario.servicio.PrestamoService;
@@ -28,7 +27,6 @@ public class PagoPrestamoController {
     @GetMapping("/registrar/{id}")
     public String mostrarFormularioPago(@PathVariable("id") Integer idPrestamo, Model model) {
         Prestamo prestamo = prestamoService.buscarPorId(idPrestamo);
-        log.info("Prestamo buscado: {}", prestamo);
         PagoPrestamo pago = new PagoPrestamo();
         pago.setPrestamo(prestamo);
         model.addAttribute("pago", pago);

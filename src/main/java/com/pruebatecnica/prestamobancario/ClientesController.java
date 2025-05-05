@@ -4,7 +4,6 @@ import com.pruebatecnica.prestamobancario.dominio.Cliente;
 import com.pruebatecnica.prestamobancario.dominio.SolicitudPrestamo;
 import com.pruebatecnica.prestamobancario.servicio.ClienteService;
 import com.pruebatecnica.prestamobancario.servicio.EstadoSolicitudService;
-import com.pruebatecnica.prestamobancario.servicio.UsuarioService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,14 +22,11 @@ public class ClientesController {
     private ClienteService clienteService;
     @Autowired
     private EstadoSolicitudService estadoSolicitudService;
-    //private UsuarioService usuarioService;
 
     //Consultar todos los clientes
     @GetMapping("/clientes")
     public String mostrarClientes(Model model) {
         var clientes = clienteService.listarClientes();
-        log.info("Mostrando Clientes");
-        log.info("Clientes: {}", clientes);
         model.addAttribute("clientes", clientes);
         return "clientes";
     }
