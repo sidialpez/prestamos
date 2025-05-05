@@ -59,6 +59,3 @@ Abrir en el navegador la url: http://localhost:8080
 - MySQL 8
 - Docker y Docker Compose
 
-## Autor
-Proyecto técnico desarrollado para prueba como Analista Programador.
-
