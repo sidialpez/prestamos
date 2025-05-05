@@ -1,11 +1,14 @@
 package com.pruebatecnica.prestamobancario;
 
+import com.pruebatecnica.prestamobancario.dao.EstadoSolicitudDao;
+import com.pruebatecnica.prestamobancario.dao.UsuarioDao;
 import com.pruebatecnica.prestamobancario.dominio.Cliente;
 import com.pruebatecnica.prestamobancario.dominio.EstadoSolicitud;
 import com.pruebatecnica.prestamobancario.dominio.SolicitudPrestamo;
 import com.pruebatecnica.prestamobancario.dominio.Usuario;
 import com.pruebatecnica.prestamobancario.servicio.SolicitudService;
 import com.pruebatecnica.prestamobancario.servicio.SolicitudServiceImpl;
+import com.pruebatecnica.prestamobancario.servicio.UsuarioService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +32,12 @@ public class SolicitudesController {
     @Autowired
     private SolicitudService solicitudService;
 
+    @Autowired
+    private UsuarioDao usuarioDao;
+
+    @Autowired
+    private EstadoSolicitudDao estadoDao;
+
     @GetMapping("/crearSolicitud")
     public String mostrarSolicitudes() {
 
@@ -42,10 +51,12 @@ public class SolicitudesController {
             return "crearSolicitud";
         }
         solicitud.setFechasolicitud(new Date());
-        Usuario usuario = new Usuario();
-        usuario.setIdusuario(1L);
+        Usuario usuario = usuarioDao.findByUsuario("jperez");
+        solicitud.setUsuario(usuario);
+
         EstadoSolicitud estadoSolicitud = new EstadoSolicitud();
-        estadoSolicitud.setIdestadosolicitud(3L);
+        //estadoSolicitud.setIdestadosolicitud(3L);
+        estadoSolicitud = estadoDao.findByNombreestado("En Proceso");
         solicitud.setUsuario(usuario);
         solicitud.setEstadoSolicitud(estadoSolicitud);
         solicitudService.guardar(solicitud);

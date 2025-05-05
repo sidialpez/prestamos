@@ -15,7 +15,7 @@ public interface PrestamoDao extends CrudRepository<Prestamo, Integer> {
             "JOIN p.solicitudPrestamo s " +
             "JOIN s.cliente c " +
             "JOIN p.estadoPrestamo e " +
-            "WHERE c.cui = :cui AND e.idestadoprestamo = 1")
+            "WHERE c.cui = :cui AND e.nombreestadoPrestamo = 'Activo'")
     List<Prestamo> findPrestamosActivosPorCui(@Param("cui") String cui);
 
 }
